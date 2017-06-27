@@ -10,10 +10,11 @@ lazy val root = (project in file(".")).
     )),
     name := "scala-spark-webapp",
     version := "0.1",
+    mainClass in assembly := Some("io.radanalytics.examples.akka.sparkpi.WebServerHttpApp"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-http"         % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-xml"     % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-stream"       % akkaVersion,
-      "org.apache.spark"  %  "spark-sql_2.11"     % "2.1.0"  // % "provided"
+      "org.apache.spark"  %  "spark-sql_2.11"     % "2.1.0"  % "provided"
     )
   )
