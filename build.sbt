@@ -4,7 +4,7 @@ lazy val akkaVersion    = "2.5.3"
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
-      // scalaHome       := Some(file("/opt/scala")),
+      scalaHome       := Some(file("/opt/scala")),
       scalaVersion    := "2.11.8",
       organization    := "io.radanalytics.examples.akka.sparkpi"
     )),
