@@ -33,5 +33,5 @@ object WebServerHttpApp extends HttpApp with App {
       }
 
   // This will start the server until the return key is pressed
-  startServer("localhost", 8080)
+  startServer("0.0.0.0", 8080)
 }
