@@ -1,3 +1,5 @@
+**UNDER DEVELOPMENT**
+
 # scala-spark-webapp
 A Scala webapp using akka-http to launch a SparkPi computation from a REST endpoint (GET)
 
