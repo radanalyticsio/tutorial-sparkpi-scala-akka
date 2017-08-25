@@ -1,5 +1,5 @@
-# scala-spark-webapp
-A Scala webapp using akka-http to launch a SparkPi computation from a REST endpoint (GET)
+# SparkPi
+A Scala webapp using akka-http to launch a SparkPi computation from an HTTP endpoint (GET)
 
 This application is an example tutorial for the [radanalytics.io](http://radanalytics.io) community. 
 It is intended to be used as a source-to-image (s2i) application.
