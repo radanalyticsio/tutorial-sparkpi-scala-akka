@@ -18,7 +18,7 @@ You should have access to an OpenShift cluster and be logged in with the
    ```bash
    oc new-app --template oshinko-scala-spark-build-dc \
    -p APPLICATION_NAME=scala-spark-webapp \
-   -p GIT_URI=https://github.com/pdmack/scala-spark-webapp \
+   -p GIT_URI=https://github.com/radanalyticsio/tutorial-sparkpi-scala-akka \
    -p APP_MAIN_CLASS=io.radanalytics.examples.akka.sparkpi.WebServerHttpApp \
    -p APP_FILE=scala-spark-webapp_2.11-0.1.jar \
    -p SPARK_OPTIONS=" --packages com.typesafe.akka:akka-http_2.11:10.0.9,com.typesafe.akka:akka-http-xml_2.11:10.0.9,com.typesafe.akka:akka-stream_2.11:2.5.3 --conf spark.jars.ivy=/tmp/.ivy2 "
