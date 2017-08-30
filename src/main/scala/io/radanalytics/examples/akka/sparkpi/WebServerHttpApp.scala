@@ -18,10 +18,10 @@ object WebServerHttpApp extends HttpApp with App {
     } ~
       path("sparkpi") { // Listens to paths that are exactly `/sparkpi`
         get { // Listens only to GET requests
-          parameters("partitions".as[Int] ? 2) { partitions => // Accept the "partitions" query parameter
+          parameters("scale".as[Int] ? 2) { scale => // Accept the "scale" query parameter
             val spark = SparkSession.builder.appName("Scala SparkPi WebApp").getOrCreate()
-            val n = math.min(100000L * partitions, Int.MaxValue).toInt // avoid overflow
-            val count = spark.sparkContext.parallelize(1 until n, partitions).map { i =>
+            val n = math.min(100000L * scale, Int.MaxValue).toInt // avoid overflow
+            val count = spark.sparkContext.parallelize(1 until n, scale).map { i =>
               val x = random
               val y = random
               if (x * x + y * y < 1) 1 else 0
