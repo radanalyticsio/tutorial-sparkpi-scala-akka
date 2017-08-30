@@ -18,17 +18,17 @@ object WebServerHttpApp extends HttpApp with App {
     } ~
       path("sparkpi") { // Listens to paths that are exactly `/sparkpi`
         get { // Listens only to GET requests
-          val spark = SparkSession.builder.appName("Scala SparkPi WebApp").getOrCreate()
-          val slices = if (args.length > 0) args(0).toInt else 2
-          val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow
-          val count = spark.sparkContext.parallelize(1 until n, slices).map { i =>
-            val x = random * 2 - 1
-            val y = random * 2 - 1
-            if (x * x + y * y < 1) 1 else 0
-          }.reduce(_ + _)
-          spark.stop()
-          complete("Pi is roughly " + 4.0 * count / (n - 1))
-
+          parameters("partitions".as[Int] ? 2) { partitions => // Accept the "partitions" query parameter
+            val spark = SparkSession.builder.appName("Scala SparkPi WebApp").getOrCreate()
+            val n = math.min(100000L * partitions, Int.MaxValue).toInt // avoid overflow
+            val count = spark.sparkContext.parallelize(1 until n, partitions).map { i =>
+              val x = random
+              val y = random
+              if (x * x + y * y < 1) 1 else 0
+            }.reduce(_ + _)
+            spark.stop()
+            complete("Pi is roughly " + 4.0 * count / (n - 1))
+          }
         }
       }
 

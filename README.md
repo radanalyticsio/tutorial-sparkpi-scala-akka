@@ -1,7 +1,7 @@
 # SparkPi
 A Scala webapp using akka-http to launch a SparkPi computation from an HTTP endpoint (GET)
 
-This application is an example tutorial for the [radanalytics.io](http://radanalytics.io) community. 
+This application is an example tutorial for the [radanalytics.io](https://radanalytics.io) community.
 It is intended to be used as a source-to-image (s2i) application.
 
 ## Quick start
@@ -11,7 +11,7 @@ You should have access to an OpenShift cluster and be logged in with the
 
 1. Create the necessary infrastructure objects
    ```bash
-   oc create -f http://radanalytics.io/resources.yaml
+   oc create -f https://radanalytics.io/resources.yaml
    ```
 
 1. Launch scala-spark-webapp
@@ -34,5 +34,16 @@ You should have access to an OpenShift cluster and be logged in with the
    $ curl http://`oc get routes/scala-spark-webapp --template='{{.spec.host}}'`
      Scala Akka SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app.
    $ curl http://`oc get routes/scala-spark-webapp --template='{{.spec.host}}'`/sparkpi
-     Pi is roughly 3.1458957294786476  
+     Pi is roughly 3.1458957294786476
    ```
+
+ ### Optional parameter
+
+ If you would like to change the number of samples that are used to calculate
+ Pi, you can specify them by adding the `partitions` argument to your request
+ , for example:
+
+ ```bash
+ $ curl http://`oc get routes/scala-spark-webapp --template='{{.spec.host}}'`/sparkpi?partitions=10
+ Pi is roughly 3.141749
+ ```
