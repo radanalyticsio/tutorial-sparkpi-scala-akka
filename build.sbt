@@ -15,6 +15,6 @@ lazy val root = (project in file(".")).
       "com.typesafe.akka" %% "akka-http"         % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-xml"     % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-stream"       % akkaVersion,
-      "org.apache.spark"  %  "spark-sql_2.11"     % "2.1.0"  % "provided"
+      "org.apache.spark"  %  "spark-sql_2.11"     % "2.3.0"  % "provided"
     )
   )
